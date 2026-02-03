@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yann - ML Researcher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .title {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .header .contact {
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        .header .contact a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .header .contact a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .section {
+            margin-bottom: 45px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section-content {
+            margin-top: 20px;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 30px;
+        }
+
+        .experience-item h3, .education-item h3 {
+            color: #333;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .meta {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .description {
+            color: #555;
+            margin-top: 10px;
+            line-height: 1.7;
+        }
+
+        .description ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .description li {
+            margin-bottom: 8px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 5px 0;
+            color: #555;
+        }
+
+        .skill-category li:before {
+            content: "▹ ";
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Tab Navigation Styles */
+        .tabs {
+            background: white;
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 20px 30px;
+            font-size: 1.05em;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+        }
+
+        .tab-button:hover {
+            color: #667eea;
+            background: #f8f9fa;
+        }
+
+        .tab-button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: #f8f9fa;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Profile Section Styles */
+        .profile-container {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .profile-image-wrapper {
+            flex-shrink: 0;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 4px solid #667eea;
+        }
+
+        .profile-text {
+            flex: 1;
+        }
+
+        .motivation-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            margin-top: 30px;
+        }
+
+        .motivation-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .motivation-section p {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Contact Cards Styles */
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .contact-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .contact-card h3 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+        }
+
+        .contact-card .position {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .contact-info {
+            margin: 15px 0;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .contact-info-item span {
+            margin-right: 10px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .recommendation-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+
+        .recommendation-link:hover {
+            background: #764ba2;
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-button {
+                padding: 15px 20px;
+                font-size: 0.95em;
+            }
+
+            .profile-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            line-height: 1.8;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Yann Bourdé</h1>
+            <div class="title">Machine Learning Engineer</div>
+            <div class="contact">
+                <a href="mailto:ybourde@student.ethz.ch">✉ ybourde@student.ethz.ch</a>
+                <!-- <a href="https://github.com/yourusername" target="_blank">🔗 GitHub</a> -->
+                <a href="https://www.linkedin.com/in/ybourde/" target="_blank">🔗 LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'about')">About</button>
+            <button class="tab-button" onclick="openTab(event, 'education')">Education</button>
+            <button class="tab-button" onclick="openTab(event, 'research')">Research & Projects</button>
+            <button class="tab-button" onclick="openTab(event, 'professional')">Professional Experience</button>
+            <button class="tab-button" onclick="openTab(event, 'skills')">Skills</button>
+            <!-- <button class="tab-button" onclick="openTab(event, 'contacts')">Contacts & Referees</button> -->
+        </div>
+
+        <div class="content">
+            <div id="about" class="tab-content active">
+                <div class="section">
+                    <h2>About</h2>
+                    
+                    <div class="profile-container">
+                        <div class="profile-image-wrapper">
+                            <img src="IMG_1991.JPG" alt="Your Name" class="profile-image">
+                            <!-- Replace "your-photo.jpg" with the actual path to your photo -->
+                        </div>
+                        <div class="profile-text">
+                            <div class="about">
+                                Hi! My name is Yann, I'm a master's student at ETH Zürich specializing in machine learning development and AI applications. 
+                                I am currently working on my master's thesis on generation of CT & PET images using diffusion models. 
+                                I will graduate in June 2026 and I am currently looking for work opportunities in the field of machine learning, AI and data science in general. 
+                                You can learn more about my interests below and find more details about my work and research in the other tabs.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="motivation-section">
+                        <h3>Motivation & Research Interests</h3>
+                        <p>
+                            I first became interested in machine learning during the final year of my bachelor’s degree at McGill University, when I took the course Computer Vision taught by Prof. Dr. James Clark. 
+                            The subject immediately resonated with me, motivating me to pursue additional coursework in machine learning and ultimately to apply for my current Master’s degree at ETH Zurich. 
+                            Throughout my studies, I have explored a broad range of machine learning application domains, including natural language processing, computer vision for agricultural and medical applications, 
+                            biologically inspired neural networks, and machine learning on microcontrollers.
+                        </p>
+                        <p>
+                            <br/>
+                            My research experience includes projects on EEG signal classification using foundation models, wheat volume estimation through object detection and segmentation, and more recently, medical image generation 
+                            using probabilistic models. While much of my work so far has focused on computer vision and medical applications, these are not my only interests. 
+                            I am particularly eager to explore machine learning in industrial settings, such as robotics and autonomous systems, and I have also developed a strong interest in the financial sector and its 
+                            many applications of machine learning. More broadly, I remain open to diverse real-world ML applications and look forward to continuing to expand my experience across domains.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="education" class="tab-content">
+                <div class="section">
+                    <h2>Education</h2>
+                    <div class="section-content">
+                        <div class="education-item">
+                            <h3>ETH Zürich</h3>
+                            <h4>MSc. Electrical Engineering and Information Technology - Specialization in Machine Learning and Signal Processing</h4>
+                            <div class="meta">Zürich, Switzerland | 2023 - Present</div>
+                            <div class="description">
+                                <strong>Master's Thesis:</strong> Deep Generative Models for CT/PET Synthesis.
+                                <br/><strong>Courses:</strong> Deep Learning, Image Analysis and Computer Vision, Natural Language Processing, Machine Learning on Microcontrollers, 
+                                Learning in Deep Artificial and Biological Neuronal Networks, Probabilistic Artificial Intelligence, Neural Network Theory, Principles of Distributed Computing, 
+                                Optimization Methods for Engineers, Computational Systems Biology, Cell and Molecular Biology for Engineers.    
+                            </div>
+                        </div>
+
+                        <div class="education-item">
+                            <h3>McGill University</h3>
+                            <h4>BEng. Electrical Engineering</h4>
+                            <div class="meta">Montréal, Canada | 2018 - 2023</div>
+                            <div class="description">
+                                <strong>Bachelor's Project:</strong> Creation and development of an automated laryngoscope.
+                                <br/><strong>Notable Courses for ML:</strong> Introduction to Computer Vision, Applied Machine Learning, Microprocessors, Introduction to Ethics of Intelligent Systems.
+                            </div>
+                        </div>
+
+                        <div class="education-item">
+                            <h3>Toronto French School</h3>
+                            <h4>Bilingual International Baccalaureate Diploma & Ontario Secondary School Diploma</h4>
+                            <div class="meta">Toronto, Canada | Graduated 2018</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="research" class="tab-content">
+                <div class="section">
+                    <h2>Research & Projects</h2>
+                    <div class="section-content">
+                        <div class="experience-item">
+                            <h3>Deep Generative Models for CT/PET Synthesis</h3>
+                            <div class="meta"><strong>Master's Thesis</strong> | Current</div>
+                            <div class="description">
+                                I am currently researching different ways to generate matching PET scans from existing CT scans using diffusion models. 
+                                This project idea emerged from the fact that PET machinary is scarces relative to CT consequently reducing access to PET imagery to a large number of people.
+                                The goal is to see if existing diffusion models, particulary from stable diffusion, can be leveraged for this type of data, and if so how well. 
+                                I am also exploring different training structures such as using different timesteps for each modalities.
+                                <ul>
+                                    <li>Fine-tuning stable diffusion models on medical image data.</li>
+                                    <li>Exploring pre-processing techniques to handle extreme data sparsity of PET scans.</li>
+                                    <li>Exploring multi-timestep joint probability variant for medical image generation.</li>
+                                </ul>
+                                <strong>Tools:</strong> Python, PyTorch, HuggingFace.
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <h3>Improving Volume Prediction of Wheat based on Multi-view Images</h3>
+                            <div class="meta"><strong>Semester Research Project</strong> | 2025
+                                <span class="document-links">
+                                    📄 <a href="YB_SP2_presentation.pdf" download onclick="event.stopPropagation();">Presentation</a>
+                                    📑 <a href="YB_SP2_report.pdf" download onclick="event.stopPropagation();">Report</a>
+                                </span>
+                            </div>
+                            <div class="description">
+                                For this research project, I picked up the work from a previous thesis and had to explore ways of improving the existing pipeline. 
+                                The original idea was to be able to infer the volume of wheat spikes from 2D images taken from above. 
+                                The pipeline was structured in 3 main components, a detection model, a segmentation model and then a volume prediction model. 
+                                I did extensive work on the first 2 components by testing and fine-tuning different detection and segmentation models which could be improved.
+                                I explored a lot of different strategies to train the segmentation model with limited labeled data. 
+                                Finally, I developed robust experiments to test the impact of improvements on the first 2 components on the final output volume.
+                                <ul>
+                                    <li>Trained and benchmarked different object detection and segmentation models.</li>
+                                    <li>Explored and implemented different training strategies with limited labeled data.</li>
+                                    <li>Developed robust experiments to assess the impact of upstream models on final volume
+                                        output.</li>
+                                </ul>
+                                <strong>Tools:</strong> Python, PyTorch, OpenCV.
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <h3>Fine-tuning Foundational Model for EEG Classification</h3>
+                            <div class="meta"><strong>Semester Research Project</strong> | 2024
+                                <span class="document-links">
+                                    📄 <a href="YB_SP1_presentation.pdf" download onclick="event.stopPropagation();">Presentation</a>
+                                    <!-- 📑 <a href="thesis-report.pdf" download onclick="event.stopPropagation();">Report</a> -->
+                                </span>
+                            </div>
+                            <div class="description">
+                                For this research project, my task was to use an in house foundation model trained on EEG data from a particular setting and see if it could be finetuned on different datasets 
+                                which contained EEG data from other areas. The datasets that I chose to investigate were related to sleep analysis and image visualization classification (EEG data from looking at images).
+                                The second goal of the project was to try and reduce the model size such that it could fit on a small device. To this end, I used different model reduction techniques to reduce the model size
+                                while maintaining accuracy.
+                                <ul>
+                                    <li>Finetuned of foundation model (LLM) for EEG data classification on 4 different datasets.</li>
+                                    <li>Developed and end-to-end pipeline from data to output classification.</li>
+                                    <li>Reduced model size by 50% using pruning techniques while maintaining accuracy.</li>
+                                </ul>
+                                <strong>Tools:</strong> Python, PyTorch, PyTorch Lightning, OmegaConf, TensorFlow Lite.
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="professional" class="tab-content">
+                <div class="section">
+                    <h2>Professional Experience</h2>
+                    <div class="section-content">
+                        <div class="experience-item">
+                            <h3>Sytem Design Intern</h3>
+                            <div class="meta"><strong>Thales Ground Transportation Systems</strong> | Toronto | May 2021 - August 2022</div>
+                            <div class="description">
+                                <ul>
+                                    <li>I worked on the development of the signaling system for one of the Hong-Kong subway lines.</li>
+                                    <li>I handled thousands of customer requirements using scripts through IBM DOORS to classify and modify them.</li>
+                                    <li>I collaborated with team members to write/edit/adapt system requirements.</li>
+                                    <li>I did regular presentations to my team and to other teams inside the company to explain the solutions I developed.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Add more professional experiences as needed -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="skills" class="tab-content">
+                <div class="section">
+                    <h2>Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Machine Learning</h4>
+                            <ul>
+                                <li>Diffusion Models (Stable Diffusion, DDPM)</li>
+                                <li>Variational Autoencoders (VAE)</li>
+                                <li>Computer Vision Models</li>
+                                <li>Large Language Models (LLMs)</li>
+                                <li>Natural Language Processing (NLP)</li>
+                                <li>Transformer Architectures</li>
+                                <li>Sequence Modeling (LSTMs)</li>
+                                <li>Model Reduction/Pruning</li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="skill-category">
+                            <h4>Deep Learning Frameworks</h4>
+                            <ul>
+                                <li>PyTorch, PyTorch Lightning</li>
+                                <li>TensorFlow, TensorFlow Lite</li>
+                                <li>OmegaConf</li>
+                                <li>HuggingFace</li>
+                                <li>ML related libraries (Scikit-learn, Pandas, NumPy etc...)</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-category">
+                            <h4>Development & Tools</h4>
+                            <ul>
+                                <li>Python, SQL, C++, C, Java, Swift, VHDL/Verilog, Assembly</li>
+                                <li>Git version control</li>
+                                <li>Docker</li>
+                                <li>AWS</li>
+                                <li>CAD / Fusion 360</li>
+                                <li>SLURM job scheduling</li>
+                                <li>GPU cluster computing</li>
+                                <li>Linux/WSL</li>
+                            </ul>
+                        </div>
+
+                        <!-- <div class="skill-category">
+                            <h4>Data Science</h4>
+                            <ul>
+                                <li>NumPy, Pandas</li>
+                                <li>Advanced visualization</li>
+                                <li>Statistical analysis</li>
+                                <li>Bayesian inference</li>
+                            </ul>
+                        </div> -->
+
+                        <div class="skill-category">
+                            <h4>Languages</h4>
+                            <ul>
+                                <li>Fluent/Native in Engligh.</li>
+                                <li>Fluent/Native in French.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contacts" class="tab-content">
+                <div class="section">
+                    <h2>Contacts & Referees</h2>
+                    <div class="section-content">
+                        <div class="contact-cards">
+                            <div class="contact-card">
+                                <h3>Dr. [Supervisor Name]</h3>
+                                <div class="position">Thesis Supervisor | [Department]</div>
+                                <div class="contact-info">
+                                    <div class="contact-info-item">
+                                        <span>📧</span>
+                                        <a href="mailto:supervisor@university.edu">supervisor@university.edu</a>
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <span>📞</span>
+                                        +XX XXX XXX XXXX
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <span>🏢</span>
+                                        [University Name], [Building/Office]
+                                    </div>
+                                </div>
+                                <a href="recommendation-letter-1.pdf" class="recommendation-link" target="_blank">
+                                    📄 View Recommendation Letter
+                                </a>
+                            </div>
+
+                            <div class="contact-card">
+                                <h3>Prof. [Professor Name]</h3>
+                                <div class="position">Research Advisor | [Department]</div>
+                                <div class="contact-info">
+                                    <div class="contact-info-item">
+                                        <span>📧</span>
+                                        <a href="mailto:professor@university.edu">professor@university.edu</a>
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <span>📞</span>
+                                        +XX XXX XXX XXXX
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <span>🏢</span>
+                                        [University Name], [Building/Office]
+                                    </div>
+                                </div>
+                                <a href="recommendation-letter-2.pdf" class="recommendation-link" target="_blank">
+                                    📄 View Recommendation Letter
+                                </a>
+                            </div>
+
+                            <div class="contact-card">
+                                <h3>Dr. [Industry Contact Name]</h3>
+                                <div class="position">Internship Supervisor | [Company Name]</div>
+                                <div class="contact-info">
+                                    <div class="contact-info-item">
+                                        <span>📧</span>
+                                        <a href="mailto:contact@company.com">contact@company.com</a>
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <span>📞</span>
+                                        +XX XXX XXX XXXX
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <span>🏢</span>
+                                        [Company Name], [Location]
+                                    </div>
+                                </div>
+                                <a href="recommendation-letter-3.pdf" class="recommendation-link" target="_blank">
+                                    📄 View Recommendation Letter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function openTab(event, tabName) {
+                // Hide all tab contents
+                const tabContents = document.getElementsByClassName('tab-content');
+                for (let i = 0; i < tabContents.length; i++) {
+                    tabContents[i].classList.remove('active');
+                }
+
+                // Remove active class from all tab buttons
+                const tabButtons = document.getElementsByClassName('tab-button');
+                for (let i = 0; i < tabButtons.length; i++) {
+                    tabButtons[i].classList.remove('active');
+                }
+
+                // Show the selected tab content and mark button as active
+                document.getElementById(tabName).classList.add('active');
+                event.currentTarget.classList.add('active');
+            }
+        </script>
+    </div>
+</body>
+</html>

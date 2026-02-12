@@ -418,9 +418,9 @@
                         <p>
                             <br/>
                             My research experience includes projects on EEG signal classification using foundation models, wheat volume estimation through object detection and segmentation, and more recently, medical image generation 
-                            using probabilistic models. While much of my work so far has focused on computer vision and medical applications, these are not my only interests. 
+                            using diffusion models. While much of my work so far has focused on computer vision and medical applications, these are not my only interests. 
                             I am particularly eager to explore machine learning in industrial settings, such as robotics and autonomous systems, and I have also developed a strong interest in the financial sector and its 
-                            many applications of machine learning. More broadly, I remain open to diverse real-world ML applications and look forward to continuing to expand my experience across domains.
+                            many applications of machine learning. More broadly, I remain open to diverse real-world machine learning applications and look forward to continue gaining experience across different domains.
                         </p>
                     </div>
                 </div>
@@ -469,7 +469,7 @@
                             <h3>Deep Generative Models for CT/PET Synthesis</h3>
                             <div class="meta"><strong>Master's Thesis</strong> | Current</div>
                             <div class="description">
-                                I am currently researching different ways to generate matching PET scans from existing CT scans using diffusion models. 
+                                I am currently researching different ways to generate matching PET/CT scans using diffusion models. 
                                 This project idea emerged from the fact that PET machinary is scarces relative to CT consequently reducing access to PET imagery to a large number of people.
                                 The goal is to see if existing diffusion models, particulary from stable diffusion, can be leveraged for this type of data, and if so how well. 
                                 I am also exploring different training structures such as using different timesteps for each modalities.
@@ -496,7 +496,7 @@
                                 The pipeline was structured in 3 main components, a detection model, a segmentation model and then a volume prediction model. 
                                 I did extensive work on the first 2 components by testing and fine-tuning different detection and segmentation models which could be improved.
                                 I explored a lot of different strategies to train the segmentation model with limited labeled data. 
-                                Finally, I developed robust experiments to test the impact of improvements on the first 2 components on the final output volume.
+                                Finally, I developed robust experiments to test the impact of improvements of the first 2 components on the final output volume.
                                 <ul>
                                     <li>Trained and benchmarked different object detection and segmentation models.</li>
                                     <li>Explored and implemented different training strategies with limited labeled data.</li>
@@ -517,8 +517,8 @@
                             </div>
                             <div class="description">
                                 For this research project, my task was to use an in house foundation model trained on EEG data from a particular setting and see if it could be finetuned on different datasets 
-                                which contained EEG data from other areas. The datasets that I chose to investigate were related to sleep analysis and image visualization classification (EEG data from looking at images).
-                                The second goal of the project was to try and reduce the model size such that it could fit on a small device. To this end, I used different model reduction techniques to reduce the model size
+                                which contained EEG data recordings from other settings. The datasets that I chose to investigate were related to sleep analysis and image visualization classification (EEG data recorded when looking at images).
+                                The second goal of the project was to try and reduce the model size such that it could fit on a small microcontroller. To this end, I used different model reduction techniques, such as structural pruning, to reduce the model size
                                 while maintaining accuracy.
                                 <ul>
                                     <li>Finetuned of foundation model (LLM) for EEG data classification on 4 different datasets.</li>
